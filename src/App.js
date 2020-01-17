@@ -23,7 +23,7 @@ const customers = [
   {
     id: 1,
     image: "https://placeimg.com/64/64/any",
-    name: "안현상",
+    name: "안현상2",
     brithday: 930211,
     sex: "남성",
     job: "developer"
@@ -43,6 +43,15 @@ const customers = [
     brithday: 930211,
     sex: "남성",
     job: "developer"
+  },
+  {
+    id: 4,
+    image: "https://placeimg.com/64/64/any/4",
+    name: "손용일",
+    brithday: 920156,
+    sex: "남성",
+    job: "백수ㅡ"
+
   }
 ];
 

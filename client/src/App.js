@@ -51,11 +51,24 @@ const customers = [
     brithday: 920156,
     sex: "남성",
     job: "백수ㅡ"
-
   }
 ];
 
 class App extends Component {
+  state = {
+    customers: ""
+  };
+  componentDidMount() {
+    this.callapi()
+      .then(res => this.setState({ customers: res }))
+      .catch(err => console.log(err));
+  }
+  callapi = async () => {
+    const response = await fetch("/api/customers");
+    const body = await response.json();
+    return body;
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -72,19 +85,21 @@ class App extends Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {customers.map(c => {
-              return (
-                <Customer
-                  key={c.id}
-                  id={c.id}
-                  image={c.image}
-                  name={c.name}
-                  brithday={c.brithday}
-                  sex={c.sex}
-                  job={c.job}
-                />
-              );
-            })}
+            {this.state.customers
+              ? this.state.customers.map(c => {
+                  return (
+                    <Customer
+                      key={c.id}
+                      id={c.id}
+                      image={c.image}
+                      name={c.name}
+                      brithday={c.brithday}
+                      sex={c.sex}
+                      job={c.job}
+                    />
+                  );
+                })
+              : ""}
           </TableBody>
         </Table>
       </Paper>
